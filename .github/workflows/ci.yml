@@ -1,0 +1,12 @@
+name: CI # name shown in actions tab
+on: [push] # trigger run on every git push
+jobs: # everything that runs lives under this
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4 # copy our repo to this runner
+      - uses: actions/setup-python@v5 # install python to this runner
+        with:
+          python-version: "3.11"
+      - run: pip install pytest
+      - run: pytest
